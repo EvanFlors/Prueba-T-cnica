@@ -1,0 +1,83 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyd
+
+# ======================
+# Virtual Environments
+# ======================
+.env
+.venv
+env/
+venv/
+ENV/
+*.env
+
+# ======================
+# Jupyter Notebooks
+# ======================
+.ipynb_checkpoints
+
+# ======================
+# Data Files
+# ======================
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.json
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.db
+*.sqlite
+*.pkl
+*.joblib
+*.sav
+*.npy
+*.npz
+
+# Data
+data/
+datasets/
+
+# ======================
+# Models
+# ======================
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.pb
+models/
+checkpoints/
+runs/
+
+# ======================
+# Logs / Outputs
+# ======================
+*.log
+*.out
+*.tmp
+logs/
+output/
+results/
+
+# ======================
+# Cache / Metadata
+# ======================
+.cache/
+*.cache
+*.pyproj
+.DS_Store
+*.bak
+*.swp
+*.tmp
