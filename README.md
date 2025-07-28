@@ -56,25 +56,39 @@ flask run
 ## Estructura del proyecto
 
 📁 src/
+
 ├── components/
+
 ├── pipeline/
+
 ├── utils.py
+
 ├── logger.py
+
 ├── exception.py
+
 ├── train.py
 
 📁 templates/
+
     └── home.html
+
     └── predict.html
 
 📁 static/
+
     └── imagen-1/
 
 📁 artifacts/
+
     └── model.pkl
+
     └── bow_vectorizer.pkl
+
     └── scaler.pkl
+
     └── label_encoder.pkl
+
 
 requirements.txt
 app.py
