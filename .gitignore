@@ -28,18 +28,18 @@ ENV/
 # ======================
 # Data Files
 # ======================
-*.csv
+#*.csv
 *.tsv
 *.xls
 *.xlsx
-*.json
+#*.json
 *.parquet
 *.feather
 *.h5
 *.hdf5
 *.db
 *.sqlite
-*.pkl
+# *.pkl
 *.joblib
 *.sav
 *.npy
@@ -57,7 +57,7 @@ datasets/
 *.onnx
 *.tflite
 *.pb
-models/
+# models/
 checkpoints/
 runs/
 
@@ -81,3 +81,6 @@ results/
 *.bak
 *.swp
 *.tmp
+
+!artifacts/
+!artifacts/**
