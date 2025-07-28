@@ -89,7 +89,4 @@ flask run
 
     └── label_encoder.pkl
 
-
-requirements.txt
-app.py
-README.md
+    ![Texto alternativo](ruta/o/url/de/la/imagen)
