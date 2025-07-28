@@ -7,7 +7,7 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.feature_extraction.text import CountVectorizer
 
 from src.exception import CustomException
@@ -72,16 +72,28 @@ category_group_map = {
 }
 
 def preprocess_text(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z\s]', '', text)
-    tokens = text.split()
-    tokens = [lemmatizer.lemmatize(word) for word in tokens]
-    return ' '.join(tokens)
+  '''
+  Function to preprocess text
+  
+  Args:
+    text (str): text to be preprocessed
+    
+  Returns:
+    text (str): preprocessed text
+  '''
+  if not isinstance(text, str):
+      return ''
+  text = text.lower()
+  text = re.sub(r'[^a-z\s]', '', text)
+  tokens = text.split()
+  tokens = [lemmatizer.lemmatize(word) for word in tokens]
+  return ' '.join(tokens)
 
 @dataclass
 class DataTransformationConfig:
     label_encoder_path = os.path.join('artifacts', 'label_encoder.pkl')
     bow_vectorizer_path = os.path.join('artifacts', 'bow_vectorizer.pkl')
+    scaler_path = os.path.join('artifacts', 'scaler.pkl')
 
 class DataTransformation:
 
@@ -133,16 +145,6 @@ class DataTransformation:
         raise CustomException(e, sys)
 
     def initiate_data_transformation(self, train_path, test_path):
-      '''
-      Function to initiate data transformation
-      
-      Args:
-        train_path (str): path to train dataset
-        test_path (str): path to test dataset
-      
-      Returns:
-        None
-      '''
       try:
         logging.info("Loading train and test datasets...")
         train_data = pd.read_csv(train_path)
@@ -160,22 +162,24 @@ class DataTransformation:
         train_data = data.iloc[:original_train_len].reset_index(drop=True)
         test_data = data.iloc[original_train_len:].reset_index(drop=True)
         
-        print(test_data.head())
         logging.info(f"Train data shape: {train_data.shape}, Test data shape: {test_data.shape}")
 
-        vectorizer = CountVectorizer(max_features=5000)
+        vectorizer = CountVectorizer(max_features=5300)
         X_train_text = vectorizer.fit_transform(train_data['clean_headline']).toarray()
         X_test_text = vectorizer.transform(test_data['clean_headline']).toarray()
         
         logging.info("BoW vectorization completed.")
 
         feature_cols = [
-          'word_count', 'avg_word_len', 'punctuation_count',
-          'upper_case_ratio', 'starts_with_number', 'contains_number'
+            'word_count', 'avg_word_len', 'punctuation_count',
+            'upper_case_ratio', 'starts_with_number', 'contains_number'
         ]
-        
-        X_train_num = train_data[feature_cols].values
-        X_test_num = test_data[feature_cols].values
+        X_train_num_raw = train_data[feature_cols].values
+        X_test_num_raw = test_data[feature_cols].values
+
+        scaler = StandardScaler()
+        X_train_num = scaler.fit_transform(X_train_num_raw)
+        X_test_num = scaler.transform(X_test_num_raw)
 
         X_train = np.hstack((X_train_text, X_train_num))
         X_test = np.hstack((X_test_text, X_test_num))
@@ -188,6 +192,9 @@ class DataTransformation:
         
         save_object(self.data_transformation_config.label_encoder_path, le)
         logging.info("Label encoder saved successfully.")
+        
+        save_object(self.data_transformation_config.scaler_path, scaler)
+        logging.info("Scaler saved successfully.")
 
         return X_train, X_test, y_train, y_test
 

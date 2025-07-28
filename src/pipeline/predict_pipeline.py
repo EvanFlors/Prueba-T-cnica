@@ -62,24 +62,29 @@ class CustomData:
 class PredictPipeline:
     def __init__(self):
         self.vectorizer_path = 'artifacts/bow_vectorizer.pkl'
+        self.scaler_path = 'artifacts/scaler.pkl'
         self.model_path = 'artifacts/model.pkl'
         self.label_encoder_path = 'artifacts/label_encoder.pkl'
 
     def predict(self, features: pd.DataFrame):
         try:
-            logging.info("Loading model and vectorizer...")
+            logging.info("Loading model and preprocessing objects...")
             vectorizer = load_object(self.vectorizer_path)
+            scaler = load_object(self.scaler_path)
             model = load_object(self.model_path)
             label_encoder = load_object(self.label_encoder_path)
 
             logging.info("Transforming clean headline with BoW...")
-            X_text = vectorizer.transform(features['clean_headline']).toarray()
+            X_text = vectorizer.transform(features['clean_headline'])
 
-            logging.info("Adding numerical features...")
+            logging.info("Extracting and scaling numerical features...")
             numerical_features = features[['word_count', 'avg_word_len', 'punctuation_count',
                                           'upper_case_ratio', 'starts_with_number', 'contains_number']].values
-            
-            final_input = np.hstack((X_text, numerical_features))
+            numerical_scaled = scaler.transform(numerical_features)
+
+            logging.info("Concatenating text and numerical features...")
+            from scipy.sparse import hstack
+            final_input = hstack([X_text, numerical_scaled])
 
             prediction = model.predict(final_input)
             label = label_encoder.inverse_transform(prediction)
