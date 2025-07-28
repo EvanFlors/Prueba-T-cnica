@@ -84,3 +84,4 @@ results/
 
 !artifacts/
 !artifacts/**
+.vercel
