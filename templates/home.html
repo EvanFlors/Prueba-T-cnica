@@ -61,7 +61,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Predicción de Categoría para Headline</h1>
+    <h1>Predicción de Categoría</h1>
     <form method="POST" action="/predict/">
       <label for="headline">Ingresa el headline:</label>
       <input type="text" id="headline" name="headline" placeholder="Escribe aquí el headline..." required />
@@ -70,7 +70,8 @@
 
     {% if prediction %}
       <div class="result">
-        Resultado de la predicción: <span>{{ prediction }}</span>
+        <p>Resultado de la predicción: <strong>{{ prediction }}</strong></p>
+        <p>Porcentaje: <span>{{ confidence }}</span></p>
       </div>
     {% endif %}
   </div>

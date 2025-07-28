@@ -23,11 +23,12 @@ def predict():
             input_df = custom_data.get_data_as_dataframe()
 
             predict_pipeline = PredictPipeline()
-            prediction = predict_pipeline.predict(input_df)
+            prediction, confidence = predict_pipeline.predict(input_df)
 
-            prediction = f"Predicted category: {prediction}"
-
-    return render_template("home.html", prediction=prediction)
+            prediction = f"{prediction}"
+            confidence = f"{round(confidence, 2)}%"
+            
+    return render_template("home.html", prediction = prediction, confidence = confidence)
 
 
 if __name__ == "__main__":

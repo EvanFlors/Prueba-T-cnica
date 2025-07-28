@@ -2,7 +2,6 @@ import sys
 import re
 import string
 import pandas as pd
-import numpy as np
 
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
@@ -87,8 +86,12 @@ class PredictPipeline:
             final_input = hstack([X_text, numerical_scaled])
 
             prediction = model.predict(final_input)
+            prediction_proba = model.predict_proba(final_input)
+
             label = label_encoder.inverse_transform(prediction)
-            return label[0]
+            confidence = prediction_proba.max()
+            
+            return label[0], confidence
 
         except Exception as e:
             raise CustomException(e, sys)

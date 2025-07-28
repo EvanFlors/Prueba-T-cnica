@@ -164,7 +164,7 @@ class DataTransformation:
         
         logging.info(f"Train data shape: {train_data.shape}, Test data shape: {test_data.shape}")
 
-        vectorizer = CountVectorizer(max_features=5300)
+        vectorizer = CountVectorizer(max_features=3000)
         X_train_text = vectorizer.fit_transform(train_data['clean_headline']).toarray()
         X_test_text = vectorizer.transform(test_data['clean_headline']).toarray()
         

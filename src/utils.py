@@ -90,3 +90,5 @@ def load_object(file_path):
   except Exception as e:
     logging.info("Exception occured in load_object method")
     raise CustomException(e, sys)
+  
+print(load_object("artifacts/model.pkl"))

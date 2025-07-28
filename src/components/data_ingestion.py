@@ -121,8 +121,8 @@ if __name__ == "__main__":
     
     train_data_path, test_data_path = ingeston.initiate_data_ingestion()
     
-    # data_transformation = DataTransformation()
-    # X_train, X_test, y_train, y_test = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
+    data_transformation = DataTransformation()
+    X_train, X_test, y_train, y_test = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
 
     # model_trainer = ModelTrainer()
     # model_trainer.initiate_model_trainer(X_train, X_test, y_train, y_test)
