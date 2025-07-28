@@ -57,17 +57,17 @@ flask run
 
 📁 src/
 
-├── components/
+    ├── components/
 
-├── pipeline/
+    ├── pipeline/
 
-├── utils.py
+    ├── utils.py
 
-├── logger.py
+    ├── logger.py
 
-├── exception.py
+    ├── exception.py
 
-├── train.py
+    ├── train.py
 
 📁 templates/
 
