@@ -53,6 +53,8 @@ python train.py
 flask run
 ```
 
+![Ejemplo web](static/imagenes/web.png)
+
 ## Estructura del proyecto
 
 📁 src/
@@ -88,5 +90,3 @@ flask run
     └── scaler.pkl
 
     └── label_encoder.pkl
-
-    ![Texto alternativo](ruta/o/url/de/la/imagen)
