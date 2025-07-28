@@ -14,6 +14,9 @@ Se recomienda usar esta versión para evitar problemas de compatibilidad.
 Se recomienda crear un entorno virtual para aislar las dependencias del proyecto.
 
 ```bash
+# Conda (Recomendado)
+conda create -p venv python==3.11.13 -y
+
 # Crear entorno virtual (puedes cambiar el nombre 'venv' por el que prefieras)
 python3 -m venv venv
 
@@ -24,17 +27,31 @@ python3 -m venv venv
 .\venv\Scripts\activate.bat
 ```
 
-### 2. Instalar dependencias
+### 2. Activar entorno
 
+
+```bash
+# Conda (Recomendado)
+conda activate venv
+```
+
+### 3. Instalar dependencias
+
+```bash
 pip install -r requirements.txt
+```
 
-### 3. Correr pipeline de entrenamiento
+### 4. Correr pipeline de entrenamiento
 
+```bash
 python train.py
+```
 
-### 4. Ejecutar API de Flask
+### 5. Ejecutar API de Flask
 
+```bash
 flask run
+```
 
 ## Estructura del proyecto
 
