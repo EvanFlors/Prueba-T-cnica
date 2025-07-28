@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba Técnica - Esteban Flores Pulido</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 40px;
+    }
+    ul {
+      margin-top: 10px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    .highlight {
+      color: #2980b9;
+      font-weight: bold;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Prueba Técnica</h1>
+    <p><strong>Nombre:</strong> Esteban Flores Pulido</p>
+
+    <div class="section">
+      <h2>Objetivo</h2>
+      <p>Demostrar habilidades técnicas en procesamiento de datos, modelado predictivo y desarrollo de pipelines siguiendo buenas prácticas de ingeniería de software.</p>
+    </div>
+
+    <div class="section">
+      <h2>Tecnologías Utilizadas</h2>
+      <ul>
+        <li>Python (scikit-learn, pandas, numpy)</li>
+        <li>Procesamiento de texto (TF-IDF, BoW)</li>
+        <li>Modelos: Random Forest, SVM, Logistic Regression, Decision Tree</li>
+        <li>Evaluación: Accuracy, F1 Macro</li>
+        <li>Serialización con Pickle</li>
+        <li>Modularización con clases y dataclasses</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Datos y Pipeline</h2>
+      <p>El análisis exploratorio y la ingeniería de datos se realizaron inicialmente en un notebook (<strong>Models.ipynb</strong>) para facilitar el entendimiento de los datos. Posteriormente, se construyó un pipeline completo de entrenamiento y predicción.</p>
+    </div>
+
+    <div class="section">
+      <h2>Análisis Exploratorio</h2>
+      {% for i in range(1, 6) %}
+        <img src="{{ url_for('static', filename='imagenes/imagen-' ~ i ~ '.png') }}" alt="Análisis {{ i }}">
+      {% endfor %}
+    </div>
+
+    <div class="section">
+      <h2>Ingeniería de Datos</h2>
+      {% for i in range(6, 8) %}
+        <img src="{{ url_for('static', filename='imagenes/imagen-' ~ i ~ '.png') }}" alt="Análisis {{ i }}">
+      {% endfor %}
+    </div>
+
+    <div class="section">
+      <h2>Resumen de la Solución</h2>
+      <p>Se desarrolló un pipeline de clasificación multiclase de texto. Para mejorar el desempeño se aplicó undersampling y se limitaron las clases con más de 10,000 muestras. Se entrenaron distintos modelos y se evaluaron con métricas robustas.</p>
+      <p>En un entorno de producción, se recomienda usar técnicas de oversampling como <strong>SMOTE</strong>, sin embargo, por limitaciones de hardware, no fue posible aplicarlas completamente.</p>
+    </div>
+
+    <div class="section">
+      <h2>Resultados</h2>
+      <p>El mejor modelo alcanzó una precisión del <strong>57%</strong>. Aunque no es viable para producción (ideal ≥ 60%), representa una buena base considerando las restricciones computacionales.</p>
+      <p>Se seleccionó <strong>Logistic Regression</strong> como modelo final.</p>
+    </div>
+
+    <div class="section">
+      <h2>Conclusión</h2>
+      <p>La solución es modular, eficiente y escalable. Puede integrarse fácilmente en un entorno productivo gracias al uso de buenas prácticas de ingeniería de software y manejo de datos.</p>
+      <p>A futuro se sugiere aplicar <strong>Oversampling</strong>, técnicas avanzadas de <strong>Hiperparameter Tuning</strong> y evaluar modelos más complejos como redes neuronales o transformers.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Probar modelo</h2>
+    <p>Puedes probar el modelo entrenado con tus propios datos:</p>
+    <a href="/predict/" class="predict-button">Ir a la sección de predicción</a>
+  </div>
+  
+</body>
+</html>

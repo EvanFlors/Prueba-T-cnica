@@ -4,5 +4,9 @@ seaborn
 matplotlib
 scikit-learn
 nltk
-gensin
+imbalanced-learn
+gensim
+colorlog
+dill
+flask
 -e .
