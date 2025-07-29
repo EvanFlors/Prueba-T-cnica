@@ -38,10 +38,13 @@ class ModelTrainer:
       logging.info("Entered initiate_model_trainer method of ModelTrainer class")
       
       models = {
-        'Logistic Regression': LogisticRegression(),
-        'Random Forest': RandomForestClassifier(),
-        'Naive Bayes': GaussianNB(),
-        'SVM': SVC()
+        'Logistic Regression': LogisticRegression(max_iter = 1000, random_state = 42, n_jobs = -1),
+        
+        # Descomentar para evaluar otros modelos
+        
+        # 'Random Forest': RandomForestClassifier(max_depth = None, random_state = 42, n_estimators = 100, n_jobs = -1),
+        # 'Naive Bayes': GaussianNB(),
+        # 'SVM': SVC(max_iter = 1000, random_state = 42, probability = True)
       }
       
       logging.info("Training models: {}".format(list(models.keys())))
@@ -63,7 +66,7 @@ class ModelTrainer:
       
       logging.info(f"Saved model at {self.model_trainer_config.trained_model_path}")
       
-      return best_model[best_model_score]
+      return True
   
     except Exception as e:
       logging.info("Exception occured in initiate_model_trainer method")
