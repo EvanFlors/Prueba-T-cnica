@@ -5,6 +5,7 @@ import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
+from scipy.sparse import hstack
 import nltk
 
 from src.exception import CustomException
@@ -111,7 +112,6 @@ class PredictPipeline:
         numerical_scaled = scaler.transform(numerical_features)
 
         logging.info("Concatenating text and numerical features...")
-        from scipy.sparse import hstack
         final_input = hstack([X_text, numerical_scaled])
 
         prediction = model.predict(final_input)

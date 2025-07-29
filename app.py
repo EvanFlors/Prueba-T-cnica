@@ -28,7 +28,9 @@ def predict():
             prediction = f"{prediction}"
             confidence = f"{round(confidence, 2)}%"
             
-    return render_template("home.html", prediction = prediction, confidence = confidence)
+            return render_template("home.html", prediction = prediction, confidence = confidence)
+    
+    return render_template("home.html")
 
 
 if __name__ == "__main__":

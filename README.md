@@ -5,7 +5,7 @@ Este proyecto clasifica titulares de noticias en diferentes categorías usando u
 ## Requisitos
 
 Este proyecto está desarrollado y probado con **Python 3.11.12**.  
-Se recomienda usar esta versión para evitar problemas de compatibilidad.
+Se recomienda usar esta versión para evitar problemas de compatibilidad del modelo almacenado.
 
 ## Instalación
 
@@ -17,14 +17,22 @@ Se recomienda crear un entorno virtual para aislar las dependencias del proyecto
 # Conda (Recomendado)
 conda create -p venv python==3.11.13 -y
 
-# Crear entorno virtual (puedes cambiar el nombre 'venv' por el que prefieras)
+# Windows
+conda activate .\venv
+
+# macOS/Linux
+conda activate ./venv
+```
+
+```bash
+# Windows/macOS/Linux
 python3 -m venv venv
 
 # PowerShell
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\activate
 
 # o en CMD
-.\venv\Scripts\activate.bat
+.\venv\Scripts\activate
 ```
 
 ### 2. Activar entorno
@@ -32,7 +40,7 @@ python3 -m venv venv
 
 ```bash
 # Conda (Recomendado)
-conda activate venv
+conda activate .\venv
 ```
 
 ### 3. Instalar dependencias
@@ -44,7 +52,8 @@ pip install -r requirements.txt
 ### 4. Correr pipeline de entrenamiento
 
 ```bash
-python train.py
+python -m src.pipeline.train_pipeline
+python .\train.py
 ```
 
 ### 5. Ejecutar API de Flask
@@ -60,21 +69,15 @@ flask run
 📁 src/
 
     ├── components/
-
     ├── pipeline/
-
     ├── utils.py
-
     ├── logger.py
-
     ├── exception.py
-
-    ├── train.py
+    └── train.py
 
 📁 templates/
 
     └── home.html
-
     └── predict.html
 
 📁 static/
@@ -84,9 +87,6 @@ flask run
 📁 artifacts/
 
     └── model.pkl
-
     └── bow_vectorizer.pkl
-
     └── scaler.pkl
-
     └── label_encoder.pkl
