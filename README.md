@@ -58,6 +58,11 @@ conda activate ./venv
 pip install -r requirements.txt
 ```
 
+```bash
+# Si tiene error del archivo requirements eliminar la última fila '-e .' e intentar instalar nuevamente
+pip install -r requirements.txt
+```
+
 ### 4. Correr pipeline de entrenamiento
 
 ```bash
