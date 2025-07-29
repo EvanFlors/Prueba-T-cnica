@@ -28,12 +28,6 @@ conda activate ./venv
 ```bash
 # Windows/macOS/Linux
 python3 -m venv venv
-
-# PowerShell
-.\venv\Scripts\activate
-
-# o en CMD
-.\venv\Scripts\activate
 ```
 
 ### 2. Activar entorno
@@ -49,7 +43,7 @@ conda activate ./venv
 ```
 
 ```bash
-# Python Venv
+# Python
 
 # PowerShell
 .\venv\Scripts\activate
