@@ -15,7 +15,8 @@ Se recomienda crear un entorno virtual para aislar las dependencias del proyecto
 
 ```bash
 # Conda (Recomendado)
-conda create -p venv python==3.11.13 -y
+conda create -p venv python=='version' -y
+conda create -p venv python==3.11.12 -y  # Recomendado
 
 # Windows
 conda activate .\venv
@@ -37,10 +38,24 @@ python3 -m venv venv
 
 ### 2. Activar entorno
 
-
 ```bash
 # Conda (Recomendado)
+
+# Windows
 conda activate .\venv
+
+# macOS/Linux
+conda activate ./venv
+```
+
+```bash
+# Python Venv
+
+# PowerShell
+.\venv\Scripts\activate
+
+# o en CMD
+.\venv\Scripts\activate
 ```
 
 ### 3. Instalar dependencias
