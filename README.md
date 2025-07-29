@@ -53,6 +53,9 @@ pip install -r requirements.txt
 
 ```bash
 python -m src.pipeline.train_pipeline
+```
+
+```bash
 python .\train.py
 ```
 
@@ -77,7 +80,7 @@ flask run
 
 📁 templates/
 
-    └── home.html
+    ├── home.html
     └── predict.html
 
 📁 static/
@@ -86,7 +89,7 @@ flask run
 
 📁 artifacts/
 
-    └── model.pkl
-    └── bow_vectorizer.pkl
-    └── scaler.pkl
+    ├── model.pkl
+    ├── bow_vectorizer.pkl
+    ├── scaler.pkl
     └── label_encoder.pkl
